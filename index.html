@@ -3,252 +3,188 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- ============================================================= -->
-<!--  EDIT THIS: your page title (shows in the browser tab)        -->
-<!-- ============================================================= -->
-<title>Your Name — Portfolio</title>
+<title>Happy Girlfriend Day &lt;3</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --paper: #F1EFE9;
-    --ink:   #17160F;
-    --muted: #6C6A5E;
-    --line:  #DCD8CD;
-    --accent:#1D4ED8;
-    --card:  #F8F6F1;
+    --wine:   #6B2A4E;
+    --ink:    #4A2A3C;
+    --rose:   #D26B87;
+    --gold:   #C98A5E;
+    --cream:  #FFF9F6;
+    --card:   rgba(255, 252, 250, 0.72);
+    --line:   rgba(107, 42, 78, 0.14);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
-    background: var(--paper);
     color: var(--ink);
     font-family: 'Inter', system-ui, sans-serif;
-    font-size: 17px;
-    line-height: 1.6;
+    font-size: 18px; line-height: 1.7;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
-  .wrap {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 24px;
+  .sky {
+    position: fixed; inset: 0; z-index: -2;
+    background: radial-gradient(120% 90% at 50% 0%, #FDEBE4 0%, #F8CFD6 38%, #EFC0D5 62%, #E3C4E4 100%);
   }
 
-  /* --- eyebrow labels (the mono "/ 01" markers) --- */
-  .eyebrow {
-    font-family: 'Space Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.04em;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 28px;
-  }
-  .eyebrow::before {
-    content: attr(data-n) "  /  ";
-    color: var(--accent);
+  .petals { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+  .petal { position: absolute; top: -6vh; color: var(--rose); opacity: 0; font-size: 20px; animation: fall linear infinite; }
+  @keyframes fall {
+    0%   { transform: translateY(-6vh) translateX(0) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.5; }
+    90%  { opacity: 0.5; }
+    100% { transform: translateY(112vh) translateX(40px) rotate(70deg); opacity: 0; }
   }
 
-  /* --- hero --- */
-  header {
-    padding: 120px 0 90px;
-  }
-  header .intro {
-    font-family: 'Space Mono', monospace;
-    font-size: 14px;
-    color: var(--muted);
-    margin-bottom: 20px;
-  }
-  header .dot {
-    display: inline-block;
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    margin-right: 8px;
-    vertical-align: middle;
-  }
-  h1 {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-weight: 400;
-    font-size: clamp(52px, 11vw, 96px);
-    line-height: 1.02;
-    letter-spacing: -0.01em;
-    margin-bottom: 28px;
-  }
-  h1 .accent { font-style: italic; color: var(--accent); }
+  .progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--rose), var(--gold)); z-index: 10; transition: width 0.1s linear; }
 
-  header .tagline {
-    font-size: clamp(19px, 3vw, 22px);
-    max-width: 34ch;
-    color: var(--ink);
-  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 26px; }
 
-  /* --- link row --- */
-  .links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 22px;
-    margin-top: 40px;
-    font-size: 15px;
-  }
-  .links a {
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1.5px solid var(--line);
-    padding-bottom: 2px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .links a:hover, .links a:focus-visible { color: var(--accent); border-color: var(--accent); }
+  .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 26px; }
+  .hero .eyebrow { font-family: 'Caveat', cursive; font-size: 26px; color: var(--rose); margin-bottom: 10px; opacity: 0; animation: rise 1s ease 0.2s forwards; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(46px, 12vw, 92px); line-height: 1.04; color: var(--wine); letter-spacing: 0.5px; opacity: 0; animation: rise 1.2s ease 0.5s forwards; }
+  .hero .heart { color: var(--rose); }
+  .hero .forwhom { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(22px, 5vw, 30px); color: var(--ink); margin-top: 18px; opacity: 0; animation: rise 1.2s ease 1s forwards; }
+  .scrollhint { margin-top: 64px; font-family: 'Inter', sans-serif; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wine); opacity: 0; animation: rise 1s ease 1.6s forwards, bob 2.2s ease-in-out 2.6s infinite; }
+  .scrollhint span { display: block; font-size: 20px; margin-top: 6px; }
 
-  /* --- sections --- */
-  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+  @keyframes bob  { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
 
-  h2 {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-weight: 400;
-    font-size: 30px;
-    margin-bottom: 20px;
-  }
-  section p { color: var(--ink); margin-bottom: 16px; }
-  section p.muted { color: var(--muted); }
+  section { padding: 12vh 0; }
+  .reveal { opacity: 0; transform: translateY(40px); filter: blur(6px); transition: opacity 1s ease, transform 1s ease, filter 1s ease; }
+  .reveal.in { opacity: 1; transform: none; filter: none; }
+  .reveal.d1 { transition-delay: 0.12s; }
+  .reveal.d2 { transition-delay: 0.24s; }
+  .reveal.d3 { transition-delay: 0.36s; }
+  .reveal.d4 { transition-delay: 0.48s; }
 
-  /* --- work list --- */
-  .project {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 24px 26px;
-    margin-bottom: 16px;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-  .project:hover, .project:focus-visible {
-    transform: translateY(-3px);
-    border-color: var(--accent);
-  }
-  .project .top {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 16px;
-    margin-bottom: 8px;
-  }
-  .project h3 { font-size: 19px; font-weight: 600; }
-  .project .year { font-family: 'Space Mono', monospace; font-size: 13px; color: var(--muted); white-space: nowrap; }
-  .project p { color: var(--muted); font-size: 15px; margin: 0; }
+  .note { font-family: 'Caveat', cursive; font-size: 30px; color: var(--rose); margin-bottom: 14px; }
+  h2 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(32px, 7vw, 46px); line-height: 1.15; color: var(--wine); margin-bottom: 22px; }
+  p.lead { font-size: 20px; color: var(--ink); }
 
-  /* --- footer --- */
-  footer {
-    border-top: 1px solid var(--line);
-    padding: 56px 0 80px;
-    color: var(--muted);
-    font-family: 'Space Mono', monospace;
-    font-size: 13px;
-  }
-  footer a { color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--line); }
-  footer a:hover { color: var(--accent); border-color: var(--accent); }
+  .card { background: var(--card); backdrop-filter: blur(4px); border: 1px solid var(--line); border-radius: 16px; padding: 22px 26px; margin-bottom: 16px; }
+  .card h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; color: var(--wine); margin-bottom: 4px; }
+  .card p { font-size: 16px; color: var(--ink); }
 
-  /* --- gentle load-in --- */
-  .reveal { opacity: 0; transform: translateY(12px); animation: rise 0.7s ease forwards; }
-  .reveal:nth-child(2) { animation-delay: 0.08s; }
-  .reveal:nth-child(3) { animation-delay: 0.16s; }
-  @keyframes rise { to { opacity: 1; transform: none; } }
+  .love-item { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(22px, 5vw, 28px); color: var(--ink); padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .love-item::before { content: "\2665  "; color: var(--rose); font-style: normal; font-size: 18px; }
+
+  .finale { min-height: 90vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .finale .big { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(48px, 13vw, 100px); color: var(--wine); line-height: 1.05; }
+  .finale .sig { font-family: 'Caveat', cursive; font-size: 34px; color: var(--rose); margin-top: 26px; }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .reveal { animation: none; opacity: 1; transform: none; }
+    .petal { display: none; }
+    .hero .eyebrow, .hero h1, .hero .forwhom, .scrollhint { animation: none; opacity: 1; }
+    .reveal { opacity: 1; transform: none; filter: none; transition: none; }
   }
 </style>
 </head>
 <body>
 
-<div class="wrap">
+<div class="sky"></div>
+<div class="petals" id="petals" aria-hidden="true"></div>
+<div class="progress" id="progress"></div>
 
-  <!-- ============================================================= -->
-  <!--  HERO — edit your name, one-line intro, and tagline          -->
-  <!-- ============================================================= -->
-  <header>
-    <p class="intro reveal"><span class="dot"></span>Available for new work</p>
-    <h1 class="reveal">Your <span class="accent">Name</span></h1>
-    <p class="tagline reveal">A short sentence about what you do and who you help. Keep it plain and specific.</p>
-
-    <div class="links reveal">
-      <a href="mailto:you@email.com">Email</a>
-      <a href="https://github.com/yourusername">GitHub</a>
-      <a href="https://linkedin.com/in/yourusername">LinkedIn</a>
-    </div>
-  </header>
-
-  <!-- ============================================================= -->
-  <!--  ABOUT — a short paragraph or two                            -->
-  <!-- ============================================================= -->
-  <section>
-    <p class="eyebrow" data-n="01">About</p>
-    <h2>A little about me</h2>
-    <p>Write two or three sentences here about your background, what you care about, and what you're working on now. Say it the way you'd say it to a person, not a recruiter.</p>
-    <p class="muted">You can add a second paragraph for interests outside of work, or skip it entirely.</p>
-  </section>
-
-  <!-- ============================================================= -->
-  <!--  WORK — duplicate a .project block for each item             -->
-  <!-- ============================================================= -->
-  <section>
-    <p class="eyebrow" data-n="02">Selected work</p>
-    <h2>Things I've made</h2>
-
-    <a class="project" href="#">
-      <div class="top">
-        <h3>Project One</h3>
-        <span class="year">2026</span>
-      </div>
-      <p>One line on what it is and why it mattered. Link the card to a live site or repo.</p>
-    </a>
-
-    <a class="project" href="#">
-      <div class="top">
-        <h3>Project Two</h3>
-        <span class="year">2025</span>
-      </div>
-      <p>Another short description. Keep these to a single, concrete sentence.</p>
-    </a>
-
-    <a class="project" href="#">
-      <div class="top">
-        <h3>Project Three</h3>
-        <span class="year">2025</span>
-      </div>
-      <p>Swap, remove, or add cards freely by copying one of these blocks.</p>
-    </a>
-  </section>
-
-  <!-- ============================================================= -->
-  <!--  CONTACT                                                     -->
-  <!-- ============================================================= -->
-  <section>
-    <p class="eyebrow" data-n="03">Contact</p>
-    <h2>Get in touch</h2>
-    <p>The best way to reach me is by <a href="mailto:you@email.com" style="color:var(--accent);text-decoration:none;border-bottom:1.5px solid var(--accent);">email</a>. I read everything and try to reply within a couple of days.</p>
-  </section>
-
+<!-- ============ HERO — edit her name on the "for ..." line ============ -->
+<div class="hero">
+  <p class="eyebrow">August 1st</p>
+  <h1>Happy Girlfriend Day <span class="heart">&lt;3</span></h1>
+  <p class="forwhom">for [her name]</p>
+  <p class="scrollhint">scroll<span>&darr;</span></p>
 </div>
 
-<footer>
+<!-- ============ OPENING ============ -->
+<section>
   <div class="wrap">
-    © <span id="year"></span> Your Name · Built with GitHub Pages
+    <p class="note reveal">hey you</p>
+    <h2 class="reveal d1">I made you a little something.</h2>
+    <p class="lead reveal d2">Because one day a year to celebrate you isn't nearly enough &mdash; but it's a start. Keep scrolling.</p>
   </div>
-</footer>
+</section>
+
+<!-- ============ THINGS I LOVE — edit each line, add or remove freely ============ -->
+<section>
+  <div class="wrap">
+    <h2 class="reveal">Things I love about you</h2>
+    <div class="love-item reveal d1">The way you laugh before you even finish the joke.</div>
+    <div class="love-item reveal d2">How you make an ordinary Tuesday feel like something.</div>
+    <div class="love-item reveal d3">That you always [something she does &mdash; edit me].</div>
+    <div class="love-item reveal d4">Your [her trait] &mdash; I notice it every day.</div>
+  </div>
+</section>
+
+<!-- ============ FAVORITE MOMENTS — edit the titles and descriptions ============ -->
+<section>
+  <div class="wrap">
+    <h2 class="reveal">Some of my favorite moments</h2>
+    <div class="card reveal d1">
+      <h3>[The first time we met]</h3>
+      <p>Write a sentence about it here &mdash; what happened, how you felt.</p>
+    </div>
+    <div class="card reveal d2">
+      <h3>[That trip / that night]</h3>
+      <p>Another little memory. The specific details are what make it hers.</p>
+    </div>
+    <div class="card reveal d3">
+      <h3>[An ordinary day you loved]</h3>
+      <p>Sometimes the small ones matter most. Add one here.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE NOTE — your heartfelt paragraph ============ -->
+<section>
+  <div class="wrap">
+    <p class="note reveal">from me to you</p>
+    <p class="lead reveal d1">Write whatever's in your heart here. It doesn't have to be perfect &mdash; it just has to be true. Tell her what she means to you, and why today (and every day) you're glad it's her.</p>
+  </div>
+</section>
+
+<!-- ============ FINALE — edit your name in the signature ============ -->
+<div class="finale">
+  <div class="wrap">
+    <p class="big reveal">I love you.</p>
+    <p class="sig reveal d1">&mdash; [your name]</p>
+  </div>
+</div>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+  (function () {
+    const layer = document.getElementById('petals');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    for (let i = 0; i < 14; i++) {
+      const p = document.createElement('span');
+      p.className = 'petal';
+      p.textContent = '\u2665';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.fontSize = (14 + Math.random() * 16) + 'px';
+      p.style.animationDuration = (9 + Math.random() * 9) + 's';
+      p.style.animationDelay = (Math.random() * 12) + 's';
+      layer.appendChild(p);
+    }
+  })();
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.18 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const bar = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (window.scrollY / h * 100) + '%';
+  }, { passive: true });
 </script>
 
 </body>
