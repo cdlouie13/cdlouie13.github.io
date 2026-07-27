@@ -28,15 +28,28 @@
   display: block;
 }
 
-  .photo-row { display: flex; gap: 10px; margin-bottom: 16px; }
-.photo-row img { flex: 1; min-width: 0; margin-bottom: 0; }
-
-/* on phones, 4-in-a-row gets tiny — drop to 2x2 */
-@media (max-width: 500px) {
-  .photo-row { flex-wrap: wrap; }
-  .photo-row img { flex: 1 1 calc(50% - 5px); }
-}
-
+  .photo-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    /* break out past the 640px text column */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 94vw;
+    max-width: 1200px;
+  }
+  .photo-row img {
+    height: 300px;     /* all same height; width follows = true aspect ratio */
+    width: auto;
+    max-width: 100%;
+    margin-bottom: 0;
+  }
+  @media (max-width: 600px) {
+    .photo-row img { height: 180px; }
+  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
@@ -123,7 +136,7 @@
 <!-- ============ OPENING ============ -->
 <section>
   <div class="wrap">
-    <h2 class="reveal d1">What a fun summer we've had so far!</h2>
+    <h2 class="reveal d1" style="text-align:center;">What a fun summer we've had so far!</h2>
 
    <div class="photo-row reveal d2">
   <img src="p1.JPG" alt="">
