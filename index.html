@@ -28,6 +28,15 @@
   display: block;
 }
 
+  .photo-row { display: flex; gap: 10px; margin-bottom: 16px; }
+.photo-row img { flex: 1; min-width: 0; margin-bottom: 0; }
+
+/* on phones, 4-in-a-row gets tiny — drop to 2x2 */
+@media (max-width: 500px) {
+  .photo-row { flex-wrap: wrap; }
+  .photo-row img { flex: 1 1 calc(50% - 5px); }
+}
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
@@ -114,47 +123,19 @@
 <!-- ============ OPENING ============ -->
 <section>
   <div class="wrap">
-    <p class="note reveal">hey you</p>
-    <h2 class="reveal d1">I made you a little something.</h2>
-    <p class="lead reveal d2">Because one day a year to celebrate you isn't nearly enough &mdash; but it's a start. Keep scrolling.</p>
+    <h2 class="reveal d1">What a fun summer we've had so far!</h2>
 
-    <div class="card reveal d3">
-      <img src="p1.JPG" alt="us">
-      <h3>The first time we met</h3>
-      <p>Write a sentence about it here.</p>
-    </div>
+   <div class="photo-row reveal d2">
+  <img src="p1.JPG" alt="">
+  <img src="p2.JPG" alt="">
+  <img src="p3.JPG" alt="">
+  <img src="p4.JPG" alt="">
+</div>
   </div>
 </section>
 
-<!-- ============ THINGS I LOVE — edit each line, add or remove freely ============ -->
-<section>
-  <div class="wrap">
-    <h2 class="reveal">Things I love about you</h2>
-    <div class="love-item reveal d1">The way you laugh before you even finish the joke.</div>
-    <div class="love-item reveal d2">How you make an ordinary Tuesday feel like something.</div>
-    <div class="love-item reveal d3">That you always [something she does &mdash; edit me].</div>
-    <div class="love-item reveal d4">Your [her trait] &mdash; I notice it every day.</div>
-  </div>
-</section>
 
-<!-- ============ FAVORITE MOMENTS — edit the titles and descriptions ============ -->
-<section>
-  <div class="wrap">
-    <h2 class="reveal">Some of my favorite moments</h2>
-    <div class="card reveal d1">
-      <h3>[The first time we met]</h3>
-      <p>Write a sentence about it here &mdash; what happened, how you felt.</p>
-    </div>
-    <div class="card reveal d2">
-      <h3>[That trip / that night]</h3>
-      <p>Another little memory. The specific details are what make it hers.</p>
-    </div>
-    <div class="card reveal d3">
-      <h3>[An ordinary day you loved]</h3>
-      <p>Sometimes the small ones matter most. Add one here.</p>
-    </div>
-  </div>
-</section>
+
 
 <!-- ============ THE NOTE — your heartfelt paragraph ============ -->
 <section>
@@ -167,8 +148,8 @@
 <!-- ============ FINALE — edit your name in the signature ============ -->
 <div class="finale">
   <div class="wrap">
-    <p class="big reveal">I love you.</p>
-    <p class="sig reveal d1">&mdash; [your name]</p>
+    <p class="big reveal">I love you!</p>
+    <p class="sig reveal d1">&mdash; Christian</p>
   </div>
 </div>
 
