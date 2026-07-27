@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============================================================= -->
+<!--  EDIT THIS: your page title (shows in the browser tab)        -->
+<!-- ============================================================= -->
+<title>Your Name — Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper: #F1EFE9;
+    --ink:   #17160F;
+    --muted: #6C6A5E;
+    --line:  #DCD8CD;
+    --accent:#1D4ED8;
+    --card:  #F8F6F1;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* --- eyebrow labels (the mono "/ 01" markers) --- */
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .eyebrow::before {
+    content: attr(data-n) "  /  ";
+    color: var(--accent);
+  }
+
+  /* --- hero --- */
+  header {
+    padding: 120px 0 90px;
+  }
+  header .intro {
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  header .dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  h1 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(52px, 11vw, 96px);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+  }
+  h1 .accent { font-style: italic; color: var(--accent); }
+
+  header .tagline {
+    font-size: clamp(19px, 3vw, 22px);
+    max-width: 34ch;
+    color: var(--ink);
+  }
+
+  /* --- link row --- */
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin-top: 40px;
+    font-size: 15px;
+  }
+  .links a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--line);
+    padding-bottom: 2px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .links a:hover, .links a:focus-visible { color: var(--accent); border-color: var(--accent); }
+
+  /* --- sections --- */
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+
+  h2 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  section p { color: var(--ink); margin-bottom: 16px; }
+  section p.muted { color: var(--muted); }
+
+  /* --- work list --- */
+  .project {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 24px 26px;
+    margin-bottom: 16px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .project:hover, .project:focus-visible {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+  .project .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+  .project h3 { font-size: 19px; font-weight: 600; }
+  .project .year { font-family: 'Space Mono', monospace; font-size: 13px; color: var(--muted); white-space: nowrap; }
+  .project p { color: var(--muted); font-size: 15px; margin: 0; }
+
+  /* --- footer --- */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 56px 0 80px;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+  }
+  footer a { color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--line); }
+  footer a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* --- gentle load-in --- */
+  .reveal { opacity: 0; transform: translateY(12px); animation: rise 0.7s ease forwards; }
+  .reveal:nth-child(2) { animation-delay: 0.08s; }
+  .reveal:nth-child(3) { animation-delay: 0.16s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { animation: none; opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ============================================================= -->
+  <!--  HERO — edit your name, one-line intro, and tagline          -->
+  <!-- ============================================================= -->
+  <header>
+    <p class="intro reveal"><span class="dot"></span>Available for new work</p>
+    <h1 class="reveal">Your <span class="accent">Name</span></h1>
+    <p class="tagline reveal">A short sentence about what you do and who you help. Keep it plain and specific.</p>
+
+    <div class="links reveal">
+      <a href="mailto:you@email.com">Email</a>
+      <a href="https://github.com/yourusername">GitHub</a>
+      <a href="https://linkedin.com/in/yourusername">LinkedIn</a>
+    </div>
+  </header>
+
+  <!-- ============================================================= -->
+  <!--  ABOUT — a short paragraph or two                            -->
+  <!-- ============================================================= -->
+  <section>
+    <p class="eyebrow" data-n="01">About</p>
+    <h2>A little about me</h2>
+    <p>Write two or three sentences here about your background, what you care about, and what you're working on now. Say it the way you'd say it to a person, not a recruiter.</p>
+    <p class="muted">You can add a second paragraph for interests outside of work, or skip it entirely.</p>
+  </section>
+
+  <!-- ============================================================= -->
+  <!--  WORK — duplicate a .project block for each item             -->
+  <!-- ============================================================= -->
+  <section>
+    <p class="eyebrow" data-n="02">Selected work</p>
+    <h2>Things I've made</h2>
+
+    <a class="project" href="#">
+      <div class="top">
+        <h3>Project One</h3>
+        <span class="year">2026</span>
+      </div>
+      <p>One line on what it is and why it mattered. Link the card to a live site or repo.</p>
+    </a>
+
+    <a class="project" href="#">
+      <div class="top">
+        <h3>Project Two</h3>
+        <span class="year">2025</span>
+      </div>
+      <p>Another short description. Keep these to a single, concrete sentence.</p>
+    </a>
+
+    <a class="project" href="#">
+      <div class="top">
+        <h3>Project Three</h3>
+        <span class="year">2025</span>
+      </div>
+      <p>Swap, remove, or add cards freely by copying one of these blocks.</p>
+    </a>
+  </section>
+
+  <!-- ============================================================= -->
+  <!--  CONTACT                                                     -->
+  <!-- ============================================================= -->
+  <section>
+    <p class="eyebrow" data-n="03">Contact</p>
+    <h2>Get in touch</h2>
+    <p>The best way to reach me is by <a href="mailto:you@email.com" style="color:var(--accent);text-decoration:none;border-bottom:1.5px solid var(--accent);">email</a>. I read everything and try to reply within a couple of days.</p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    © <span id="year"></span> Your Name · Built with GitHub Pages
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
