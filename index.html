@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>💗</text></svg>">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Girlfriend Day!</title>
@@ -10,6 +10,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
+
+  .burst-heart {
+    position: fixed;
+    left: 50%;
+    bottom: 40%;
+    font-size: 26px;
+    color: var(--rose);
+    pointer-events: none;
+    z-index: 5;
+    animation: burst 1.6s ease-out forwards;
+  }
+  @keyframes burst {
+    0%   { opacity: 1; transform: translate(-50%, 0) scale(0.4); }
+    100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), var(--dy)) scale(1.2); }
+  }
+  @media (prefers-reduced-motion: reduce) { .burst-heart { display: none; } }
   :root {
     --wine:   #6B2A4E;
     --ink:    #4A2A3C;
@@ -147,11 +163,18 @@
   </div>
 
 </section>
-  
+
+
+<!-- ============ THINGS I LOVE ============ -->
+<section>
+  <div class="wrap">
+    <h2 class="reveal" style="text-align:center;">Things I love about you:</h2>
+    <div class="love-item reveal d1">Goofy</div>
+    <div class="love-item reveal d2">How caring and understanding you always are.</div>
+    <div class="love-item reveal d3">That I can be completely myself around you.</div>
+    <div class="love-item reveal d4">[Add your own — something only she does]</div>
+  </div>
 </section>
-
-
-
 
 <!-- ============ THE NOTE — your heartfelt paragraph ============ -->
 <section>
@@ -159,7 +182,7 @@
     <p class="note reveal">Dear Ella,</p>
     <p class="lead reveal d1" style="margin-bottom:32px;">Happy Girlfriend Day! This year, you are officially my girlfriend! I'm sorry I couldn't spend today with you, but I know you're still going to have a great day.</p>    
     <p class="lead reveal d2" style="margin-bottom:32px;">Even though we had our ups and downs this spring, I'm eternally grateful for our relationship. Dating you was the best decision I've ever made. There isn't anyone I get along with as well as you. No matter what, I know I can be myself and that it will be enough. I never get tired of spending time with you, and I'm always looking forward to every chance I get to be around you.</p>
-    <p class="lead reveal d3" style="margin-bottom:32px;">I'm so lucky I get to call you my girlfriend because you are funny, goofy, caring, understanding, pretty, and perfect. Thank you for always inviting me over and accommodating me, even when you maybe don't want to sometimes.</p>
+    <p class="lead reveal d3" style="margin-bottom:32px;">I'm so lucky I get to call you my girlfriend because you are goofy, caring, understanding, pretty, and perfect. Thank you for always inviting me over and accommodating me, even when you maybe don't want to sometimes.</p>
     <p class="lead reveal d4" style="margin-bottom:32px;">I'm super excited for whatever the future has in store for us. Even though we won't be at the same school, I'm confident you're going to have an amazing experience in San Diego!</p>
   </div>
 </section>
@@ -199,6 +222,31 @@
     bar.style.width = (window.scrollY / h * 100) + '%';
   }, { passive: true });
 </script>
+<script>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const target = document.querySelector('.finale .big');
+    if (!target) return;
 
+    function burst() {
+      for (let i = 0; i < 28; i++) {
+        const h = document.createElement('span');
+        h.className = 'burst-heart';
+        h.textContent = '\u2665';
+        h.style.setProperty('--dx', (Math.random() * 600 - 300) + 'px');
+        h.style.setProperty('--dy', (-200 - Math.random() * 400) + 'px');
+        h.style.animationDelay = (Math.random() * 0.4) + 's';
+        h.style.fontSize = (18 + Math.random() * 22) + 'px';
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 2200);
+      }
+    }
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { burst(); obs.unobserve(e.target); } });
+    }, { threshold: 0.6 });
+    obs.observe(target);
+  })();
+</script>
 </body>
 </html>
